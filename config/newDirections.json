@@ -1,0 +1,582 @@
+{
+  "routes": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            13.430405,
+            52.510853
+          ],
+          [
+            13.430027,
+            52.510056
+          ],
+          [
+            13.428562,
+            52.508412
+          ],
+          [
+            13.4281,
+            52.507805
+          ],
+          [
+            13.427848,
+            52.50766
+          ],
+          [
+            13.427751,
+            52.507549
+          ],
+          [
+            13.426574,
+            52.508069
+          ],
+          [
+            13.42519,
+            52.508629
+          ],
+          [
+            13.424671,
+            52.508812
+          ],
+          [
+            13.423259,
+            52.506863
+          ],
+          [
+            13.420684,
+            52.507598
+          ],
+          [
+            13.420328,
+            52.507105
+          ]
+        ],
+        "type": "LineString"
+      },
+      "legs": [
+        {
+          "summary": "An der Schillingbrücke, Engeldamm",
+          "duration": 62,
+          "steps": [
+            {
+              "geometry": {
+                "coordinates": [
+                  [
+                    13.430405,
+                    52.510853
+                  ],
+                  [
+                    13.430312,
+                    52.510628
+                  ],
+                  [
+                    13.430288,
+                    52.510569
+                  ],
+                  [
+                    13.430249,
+                    52.510476
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "maneuver": {
+                "bearing_after": 194,
+                "bearing_before": 0,
+                "location": [
+                  13.430405,
+                  52.510853
+                ],
+                "modifier": "right",
+                "type": "depart",
+                "instruction": "Proceed to Andreasstraße, then go right"
+              },
+              "mode": "driving",
+              "duration": 5.2,
+              "name": "Andreasstraße",
+              "distance": 43.2
+            },
+            {
+              "geometry": {
+                "coordinates": [
+                  [
+                    13.430249,
+                    52.510476
+                  ],
+                  [
+                    13.430113,
+                    52.510192
+                  ],
+                  [
+                    13.430049,
+                    52.51009
+                  ],
+                  [
+                    13.430027,
+                    52.510056
+                  ],
+                  [
+                    13.429708,
+                    52.509697
+                  ],
+                  [
+                    13.429607,
+                    52.509587
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "maneuver": {
+                "exit": 1,
+                "bearing_after": 196,
+                "bearing_before": 194,
+                "location": [
+                  13.430249,
+                  52.510476
+                ],
+                "modifier": "straight",
+                "type": "new name",
+                "instruction": "Go straight onto An der Schillingbrücke, Andreasstraße becomes An der Schillingbrücke"
+              },
+              "mode": "driving",
+              "duration": 9.8,
+              "name": "An der Schillingbrücke",
+              "distance": 108.5
+            },
+            {
+              "geometry": {
+                "coordinates": [
+                  [
+                    13.429607,
+                    52.509587
+                  ],
+                  [
+                    13.428973,
+                    52.508874
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "maneuver": {
+                "bearing_after": 208,
+                "bearing_before": 209,
+                "location": [
+                  13.429607,
+                  52.509587
+                ],
+                "modifier": "straight",
+                "type": "new name",
+                "instruction": "Go straight onto Schillingbrücke, An der Schillingbrücke becomes Schillingbrücke"
+              },
+              "mode": "driving",
+              "duration": 6.4,
+              "name": "Schillingbrücke",
+              "distance": 90.2
+            },
+            {
+              "geometry": {
+                "coordinates": [
+                  [
+                    13.428973,
+                    52.508874
+                  ],
+                  [
+                    13.428804,
+                    52.508687
+                  ],
+                  [
+                    13.428562,
+                    52.508412
+                  ],
+                  [
+                    13.428475,
+                    52.508293
+                  ],
+                  [
+                    13.42836,
+                    52.508137
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "maneuver": {
+                "exit": 1,
+                "bearing_after": 209,
+                "bearing_before": 208,
+                "location": [
+                  13.428973,
+                  52.508874
+                ],
+                "modifier": "straight",
+                "type": "new name",
+                "instruction": "Go straight onto Bethaniendamm, Schillingbrücke becomes Bethaniendamm"
+              },
+              "mode": "driving",
+              "duration": 6.4,
+              "name": "Bethaniendamm",
+              "distance": 91.9
+            },
+            {
+              "geometry": {
+                "coordinates": [
+                  [
+                    13.42836,
+                    52.508137
+                  ],
+                  [
+                    13.428155,
+                    52.50787
+                  ],
+                  [
+                    13.4281,
+                    52.507805
+                  ],
+                  [
+                    13.428011,
+                    52.507751
+                  ],
+                  [
+                    13.427848,
+                    52.50766
+                  ],
+                  [
+                    13.427751,
+                    52.507549
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "maneuver": {
+                "bearing_after": 205,
+                "bearing_before": 204,
+                "location": [
+                  13.42836,
+                  52.508137
+                ],
+                "modifier": "straight",
+                "type": "new name",
+                "instruction": "Go straight onto Engeldamm, Bethaniendamm becomes Engeldamm"
+              },
+              "mode": "driving",
+              "duration": 27.4,
+              "name": "Engeldamm",
+              "distance": 78.4
+            },
+            {
+              "geometry": {
+                "coordinates": [
+                  [
+                    13.427751,
+                    52.507549
+                  ],
+                  [
+                    13.427575,
+                    52.507628
+                  ],
+                  [
+                    13.426687,
+                    52.508021
+                  ],
+                  [
+                    13.426579,
+                    52.508067
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "maneuver": {
+                "exit": 1,
+                "bearing_after": 306,
+                "bearing_before": 208,
+                "location": [
+                  13.427751,
+                  52.507549
+                ],
+                "modifier": "right",
+                "type": "turn",
+                "instruction": "Turn right onto Köpenicker Straße (L 1066)"
+              },
+              "mode": "driving",
+              "duration": 6.8,
+              "name": "Köpenicker Straße (L 1066)",
+              "distance": 98.5
+            },
+            {
+              "geometry": {
+                "coordinates": [
+                  [
+                    13.426579,
+                    52.508067
+                  ]
+                ],
+                "type": "Point"
+              },
+              "maneuver": {
+                "bearing_after": 0,
+                "bearing_before": 305,
+                "location": [
+                  13.426579,
+                  52.508067
+                ],
+                "modifier": "left",
+                "type": "arrive",
+                "instruction": "You have arrived at your first destination, on the left"
+              },
+              "mode": "driving",
+              "duration": 0,
+              "name": "Köpenicker Straße (L 1066)",
+              "distance": 0
+            }
+          ],
+          "distance": 510.7
+        },
+        {
+          "summary": "Adalbertstraße, Melchiorstraße",
+          "duration": 155,
+          "steps": [
+            {
+              "geometry": {
+                "coordinates": [
+                  [
+                    13.426574,
+                    52.508069
+                  ],
+                  [
+                    13.425692,
+                    52.508426
+                  ],
+                  [
+                    13.425326,
+                    52.508569
+                  ],
+                  [
+                    13.42519,
+                    52.508629
+                  ],
+                  [
+                    13.425106,
+                    52.508662
+                  ],
+                  [
+                    13.424671,
+                    52.508812
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "maneuver": {
+                "bearing_after": 304,
+                "bearing_before": 0,
+                "location": [
+                  13.426574,
+                  52.508069
+                ],
+                "modifier": "left",
+                "type": "depart",
+                "instruction": "Proceed to Köpenicker Straße (L 1066), then go left"
+              },
+              "mode": "driving",
+              "duration": 38.3,
+              "name": "Köpenicker Straße (L 1066)",
+              "distance": 153.1
+            },
+            {
+              "geometry": {
+                "coordinates": [
+                  [
+                    13.424671,
+                    52.508812
+                  ],
+                  [
+                    13.423259,
+                    52.506863
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "maneuver": {
+                "bearing_after": 204,
+                "bearing_before": 300,
+                "location": [
+                  13.424671,
+                  52.508812
+                ],
+                "modifier": "left",
+                "type": "turn",
+                "instruction": "Turn left onto Adalbertstraße"
+              },
+              "mode": "driving",
+              "duration": 41.5,
+              "name": "Adalbertstraße",
+              "distance": 236.9
+            },
+            {
+              "geometry": {
+                "coordinates": [
+                  [
+                    13.423259,
+                    52.506863
+                  ],
+                  [
+                    13.42098,
+                    52.507515
+                  ],
+                  [
+                    13.420684,
+                    52.507598
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "maneuver": {
+                "bearing_after": 295,
+                "bearing_before": 204,
+                "location": [
+                  13.423259,
+                  52.506863
+                ],
+                "modifier": "right",
+                "type": "turn",
+                "instruction": "Turn right onto Melchiorstraße"
+              },
+              "mode": "driving",
+              "duration": 44.2,
+              "name": "Melchiorstraße",
+              "distance": 192.5
+            },
+            {
+              "geometry": {
+                "coordinates": [
+                  [
+                    13.420684,
+                    52.507598
+                  ],
+                  [
+                    13.420678,
+                    52.507591
+                  ],
+                  [
+                    13.420328,
+                    52.507105
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "maneuver": {
+                "bearing_after": 208,
+                "bearing_before": 295,
+                "location": [
+                  13.420684,
+                  52.507598
+                ],
+                "modifier": "left",
+                "type": "turn",
+                "instruction": "Turn left onto Michaelkirchplatz"
+              },
+              "mode": "driving",
+              "duration": 23.6,
+              "name": "Michaelkirchplatz",
+              "distance": 59.9
+            },
+            {
+              "geometry": {
+                "coordinates": [
+                  [
+                    13.420328,
+                    52.507105
+                  ],
+                  [
+                    13.420042,
+                    52.50719
+                  ],
+                  [
+                    13.41986,
+                    52.50724
+                  ],
+                  [
+                    13.419778,
+                    52.507261
+                  ],
+                  [
+                    13.419695,
+                    52.507283
+                  ]
+                ],
+                "type": "LineString"
+              },
+              "maneuver": {
+                "bearing_after": 296,
+                "bearing_before": 204,
+                "location": [
+                  13.420328,
+                  52.507105
+                ],
+                "modifier": "right",
+                "type": "turn",
+                "instruction": "Turn right"
+              },
+              "mode": "driving",
+              "duration": 7.4,
+              "name": "",
+              "distance": 47.2
+            },
+            {
+              "geometry": {
+                "coordinates": [
+                  [
+                    13.419695,
+                    52.507283
+                  ]
+                ],
+                "type": "Point"
+              },
+              "maneuver": {
+                "bearing_after": 0,
+                "bearing_before": 294,
+                "location": [
+                  13.419695,
+                  52.507283
+                ],
+                "modifier": "left",
+                "type": "arrive",
+                "instruction": "You have arrived at your final destination, on the left"
+              },
+              "mode": "driving",
+              "duration": 0,
+              "name": "",
+              "distance": 0
+            }
+          ],
+          "distance": 689.7
+        }
+      ],
+      "duration": 217,
+      "distance": 1200.4
+    }
+  ],
+  "waypoints": [
+    {
+      "name": "Andreasstraße",
+      "location": [
+        13.430405,
+        52.510853
+      ]
+    },
+    {
+      "name": "Köpenicker Straße (L 1066)",
+      "location": [
+        13.426574,
+        52.508069
+      ]
+    },
+    {
+      "name": "",
+      "location": [
+        13.419695,
+        52.507283
+      ]
+    }
+  ],
+  "code": "Ok"
+}

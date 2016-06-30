@@ -24,26 +24,12 @@ import ShowRoute from '../events/ShowRoute'
 @observer
 class App extends Component {
   render() {
-    /*
-    return <div className={css(styles.grey)}>
-        <button onClick={this.onReset} className={css(styles.orange,styles.hover)}>
-          <span className={'fa fa-first-order'}></span><span>Seconds passed: {this.props.store.timer}</span>
-        </button>
-      </div>
-  }
-
-  onReset = () => {
-    this.props.store.resetTimer()
-    */
-    const {store} = this.props.store
-    /*
     let mapWidth = styles.contextWrapper._definition.flexBasis.replace('%','')
     let layer = null
-    let features = store.mapPoints.map((point,index) => {
+    let features = this.props.store.mapPoints.map((point,index) => {
       return <Feature key={`key${index}`} coordinates={[point[0],point[1]]}/>
     })
-    let featuresRoute=store.mappedRoute
-    */
+    let featuresRoute=this.props.store.mappedRoute
     return <div>
       <div className={css(styles.car)}/>
       <div className={css(styles.main)}>
@@ -67,20 +53,31 @@ class App extends Component {
            </div>
           <div className={css(styles.hSpace)}/>
           <div className={css(styles.contextWrapper)}>
+            <ReactMapboxGl
+              style={stylePrep(guideStyle)}                
+              zoom={guideConfig.zoom}
+              accessToken={'pk.eyJ1IjoidnVsZGluIiwiYSI6ImNpbmhxZWl3bTB3YWR0cWtqeHIycjV5em0ifQ.JOJc-IhViIB1NTZ4H33Z6g'}
+              containerStyle={{width:viewportToPixel(`${mapWidth}vw`),height:viewportToPixel('100vh')-20}}
+              onStyleLoad={this.props.store.guide}
+             >
+              <Layer
+                type='symbol'
+                layout={{ 'icon-image': 'marker-15' }}>
+                {features}
+              </Layer>
+            </ReactMapboxGl>
           </div>
           <div className={css(styles.hSpace)}/>
         </div>
         <div className={css(styles.hSpace)}/>
       </div>
-      {/*
       <div className={css(styles.car)} style={{left:viewportToPixel(`${100-mapWidth}vw`) + viewportToPixel(`${mapWidth}vw`)*.5,top:viewportToPixel('100vh')*.9}}><img src="./media/car.png" alt="car" /></div>
-      <TopBar store={store}/>
-      <FuelDialog store={store}/>
-      <RatingDialog store={store}/>  
-      <DestDialog store={store}/>     
-      <RecomDialog store={store}/>
-      <RouteDialog store={store}/>
-      */}
+      <TopBar store={this.props.store}/>
+      <FuelDialog store={this.props.store}/>
+      <RatingDialog store={this.props.store}/>  
+      <DestDialog store={this.props.store}/>     
+      <RecomDialog store={this.props.store}/>
+      <RouteDialog store={this.props.store}/>
     </div>
   }
 }
