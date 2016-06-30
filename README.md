@@ -1,7 +1,7 @@
-reaphmo
-=======
+Cognitive Driver Profile
+========================
 
-A webapp template using the following tools:
+A webapp using the following tools:
 - [webpack](https://github.com/webpack/webpack)
 - [react](https://facebook.github.io/react)
 - [mobx](https://mobxjs.github.io/mobx)
