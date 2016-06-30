@@ -22,4 +22,4 @@ open http://localhost:3000
 
 ### Credits
 
-* [mob-react-boilerplate](https://github.com/mobxjs/mobx-react-boilerplate) for the initial boilerplate
+* [mobx-react-boilerplate](https://github.com/mobxjs/mobx-react-boilerplate) for the initial boilerplate
