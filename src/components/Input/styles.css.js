@@ -9,12 +9,13 @@ export const styles = StyleSheet.create({
   },
   form: {
     flex: '1 auto',
+    //flex: '0 0 55%',
     display: 'flex'
   },
   inputWrapper: {
-    flex: '0 0 30px',
-    borderTop: '1px solid',
-    borderColor: '#CFCFCF',
+    flex: '0 0 10%',
+    //borderTop: '1px solid',
+    //borderColor: '#CFCFCF',
     display: 'flex'
   },
   input: {
@@ -25,5 +26,15 @@ export const styles = StyleSheet.create({
     borderRadius: '9.5pt',
     fontSize: '1.2em',
     flex: '1 1 auto'
+  },
+  button: {
+  	
+    border: 'none',
+    color: 'white',
+    padding: '15px 32px',
+    textAlign: 'center',
+    borderRadius: '25px',
+    display: 'inline-block',
+    fontSize: '16px'
   }
 })

@@ -12,6 +12,12 @@ const Input = ({store}) => {
     <form className={css(styles.form)} onSubmit={store.inputSubmit}>
       <input id='input' className={css(styles.input)} placeholder='Enter Chat to Analyze' type='text'/>
     </form>
+     <div>
+       <button className={css(styles.button)} onClick={()=>store.changeSeat(1)} style={store.seatState1? {backgroundColor: '#ffff00'}:{backgroundColor:'#4CAF50'}}>1</button>
+       <button className={css(styles.button)} onClick={()=>store.changeSeat(2)} style={store.seatState2? {backgroundColor: '#ffff00'}:{backgroundColor:'#4CAF50'}}>2</button>
+       <button className={css(styles.button)} onClick={()=>store.changeSeat(3)} style={store.seatState3? {backgroundColor: '#ffff00'}:{backgroundColor:'#4CAF50'}}>3</button>
+       <button className={css(styles.button)} onClick={()=>store.changeSeat(4)} style={store.seatState4? {backgroundColor: '#ffff00'}:{backgroundColor:'#4CAF50'}}>4</button>
+    </div>
   </div>
 }
 

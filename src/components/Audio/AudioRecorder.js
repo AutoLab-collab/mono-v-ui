@@ -18,10 +18,10 @@ class AudioRecorder extends Component {
     stream.on('data', (d) => {
       if(d.final) {
         this.props.store.audioReady()
-        //this.props.store.dialogSTT = d.alternatives[0].transcript;
-        //this.props.store.selectDialog();
+        this.props.store.dialogSTT = d.alternatives[0].transcript;
+        
 
-        /*let audio = WatsonSpeech.TextToSpeech.synthesize({
+       /* let audio = WatsonSpeech.TextToSpeech.synthesize({
         text: d.alternatives[0].transcript,
         token: this.props.store.ttsToken,
         autoPlay: true

@@ -100,7 +100,7 @@ export const styles = StyleSheet.create({
     //flex: '0 0 75%', // replacing with individual props to easily pull out basis
     flexGrow: '0',
     flexShrink: '0',
-    flexBasis: '75%',
+    flexBasis: '100%',
     display: 'flex',
     flexFlow: 'column nowrap'
   },
