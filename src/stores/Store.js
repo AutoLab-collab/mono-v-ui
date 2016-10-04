@@ -1,112 +1,159 @@
 import { observable } from 'mobx'
-
+import dialogService from '../services/dialog'
 // speech
 import sttService from '../services/speechToText'
 import ttsService from '../services/textToSpeech'
-
+import selectGasStation from '../services/stationSelection'
+import direction from '../services/direction'
 // map
-import guidanceSim,{simulate} from 'guidance-sim'
-import guideConfig from '../../config/newguideConfiguration.json'
-import newDirections from '../../config/newDirections.json'
-import guidanceGeoJSON,{styleRoute} from 'guidance-geojson'
-import YelpService from '../services/yelp'
-import {Locator} from 'guidance-replay'
-import point from 'turf-point'
+import guidanceSim,{simulate,setSpeed} from 'guidance-sim'
 
+import WatsonSpeech from 'watson-speech'
+import AudioRecorder from '../components/audio/AudioRecorder'
 class Store {
   @observable question = ''
+  seatNumber = 1
+  @observable seatState1 = true
+  @observable seatState2 = false
+  @observable seatState3 = false
+  @observable seatState4 = false
   @observable answer = 'Waiting on response from server...'
   @observable history = []
+  @observable dialogSTT=''
   userName = 'Tae'
   projectName = 'Cognitive Driver Profile'
   clientId = ''
-  conversationId = ''
-  server = {server: 'gsc-ind-cdp-api.mybluemix.net', port: ''}
-
+  //conversationId = ''
+  @observable audioState = 'ready'
+  server = {server: 'gsc-ind-cdp-api-lm.mybluemix.net', port: ''}
+  serveraskwatson={server:'mono-v.mybluemix.net',port:''}
+  //server = {server: 'localhost', port: '6003'}
+  sttToken = {}
+  ttsToken = {}
   constructor() {
+    //updateProfileService(this.userName,this.updateProfileCallback,this.server)
     sttService(this.sttTokenCallback,this.server)
     ttsService(this.ttsTokenCallback,this.server)
   }
-
-  // speech start
-  @observable audioState = 'ready'
-  sttToken = {}
-  ttsToken = {}
+  updateProfileCallback = (d) => {
+    this.clientId = d.client_id
+    //autorun(() => this.dialog)
+  }
+  
+  
+  dialogCallback = (answer) => {
+    /*if(!answer.text) {
+      console.log('no text in response!',answer)
+      return
+    }*/
+    //console.log('dialogCallback',answer)
+    var answerstring=''
+   // for(var i=0;i<answer.output.text.length;i++)
+    //this.answer = answer.text
+   /*{ answerstring=answerstring+answer.output.text[i]
+   }
+   */
+    answerstring=answer.transcription
+    this.history.push({
+      source: 'you',
+      value: answerstring
+    })
+    //this.conversationId = answer.context.conversation_id
+    //liping added
+    this.dialogTTS=answerstring
+    this.audioDialog()
+  }
   inputSubmit = (e) => {
     e.preventDefault()
     this.questionUpdate()
   }
   questionUpdate = () => {
     let input = document.querySelector('#input')
-    this.question = input.value
+    var seatNumber = 1
+    var questionValue=input.value
+   // this.question = {"text": input.value, "seat":1}
     this.history.push({
       source: 'me',
       value: input.value
     })
     input.value = ''
+    dialogService(questionValue,this.seatNumber, this.dialogCallback,this.serveraskwatson)
+   
+    
   }
   sttTokenCallback = (token) => {
+    //console.log('sttTokenCallback',token)
     this.sttToken = token
   }
   ttsTokenCallback = (token) => {
     this.ttsToken = token
   }
+  /*
+  audioSubmit = (obj) => {
+    if(obj != undefined){
+      console.log('audioSubmit',obj)
+    }
+  }
+  */
   audioRecording = () => {
+    //console.log('audioRecording')
     this.audioState = 'recording'
   }
+  /*
+  audioProcessing = () => {
+    console.log('audioProcessing')
+    this.audioState = 'processing'
+  }
+  */
   audioReady = () => {
+    //console.log('audioReady')
     this.questionUpdate()
     this.audioState = 'ready'
   }
-  // speech end
-  
-  // map
-  @observable mapPoints = []
-  pointBuffer = .0005
-  // map start
-  getYelpBoundingBox = (data) => {
-    let bounds = [], thisBound, coords, point, lat, lng
-    console.log('data for yelp', data)
-    data.routes.forEach(route => {
-      route.legs.forEach(leg => {
-        leg.steps.forEach(step => {
-          step.geometry.coordinates.forEach(coord => {
-            /*
-            thisBound = bounds[bounds.push({})-1]
-            lng = coord[0]
-            lat = coord[1]
-            thisBound.xMin = thisBound.xMin < lng ? thisBound.xMin : lng - this.pointBuffer
-            thisBound.xMax = thisBound.xMax > lng ? thisBound.xMax : lng + this.pointBuffer
-            thisBound.yMin = thisBound.yMin < lat ? thisBound.yMin : lat - this.pointBuffer
-            thisBound.yMax = thisBound.yMax > lat ? thisBound.yMax : lat + this.pointBuffer
-            */
-          })
-        })
-      })
-    })
-    return bounds
-  }
   guide = (mapboxgl,map) => {
-    //this.mapPointer=map
+    //console.log(map,e)
     styleRoute(mapboxgl, map, guideConfig.route)
-    //var res= guidanceSim(map, guideConfig)
-    var res = simulate(map,guideConfig)
-    var prevStep =0
-    var self=this
-    res.on('update', function(data) {
-      var locator=new Locator(guideConfig.route)
-      var userStep = locator.step(data.stepTime)
-      var userLocation = point(data.stepCoords)
-      self.currentLocation = data.stepCoords
-      if (prevStep !=userStep) {
-       	console.log('user location',data.stepCoords)
-        console.log('user Step',userStep)
-        prevStep = userStep
-        //self.navigationTime = self.navigationTime-1
-        //todo: display instruction for the next step
-      }
-    })
+    guidanceSim(map, guideConfig)
   }
+   audioDialog=() => {
+    let audio = WatsonSpeech.TextToSpeech.synthesize({
+      text: this.dialogTTS,
+      token: this.ttsToken,
+      autoPlay: true,
+      voice: "en-US_LisaVoice"
+    })
+   }
+    changeSeat=(seat_number) => {
+   	this.seatNumber=seat_number
+   	if (seat_number ==1)
+      {	
+      	this.seatState1= true
+      	this.seatState2 = false
+      	this.seatState3=false
+      	this.seatState4=false
+      }
+     else if (seat_number ==2)
+      {	
+      	this.seatState1= false
+      	this.seatState2 = true
+      	this.seatState3=false
+      	this.seatState4=false
+      } 
+      else if (seat_number==3)
+      {	
+      	this.seatState1= false
+      	this.seatState2 = false
+      	this.seatState3=true
+      	this.seatState4=false
+      } 
+      else if (seat_number ==4)
+      {	
+      	this.seatState1= false
+      	this.seatState2 = false
+      	this.seatState3=false
+      	this.seatState4=true
+      } 
+   }
 }
 
 export default Store

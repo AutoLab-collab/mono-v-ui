@@ -1,6 +1,6 @@
 export default function(callback,serverDetails) {
-  let urlSegment = '//'+serverDetails.server
-  if(serverDetails.port.length != 0) urlSegment += ':'+serverDetails.port
+  let urlSegment = serverDetails
+ // if(serverDetails.port.length != 0) urlSegment += ':'+serverDetails.port
   let get = (url) => {
     return new Promise(function(resolve,reject){
       let xhr = new XMLHttpRequest()
@@ -12,7 +12,7 @@ export default function(callback,serverDetails) {
       xhr.send()
     })
   }
-  get(`${urlSegment}/range`).then((response) => {
+  get(`${urlSegment}`).then((response) => {
     callback(response)
   })
 }
