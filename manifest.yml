@@ -1,0 +1,12 @@
+applications:
+- disk_quota: 1024M
+
+  host: gsc-ind-cdp-testing
+  name: gsc-ind-cdp-testing
+
+  path: .
+  domain: mybluemix.net
+  instances: 1
+  memory: 256M
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+  stack:  cflinuxfs2
