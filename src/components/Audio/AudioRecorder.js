@@ -14,8 +14,20 @@ class AudioRecorder extends Component {
       keepMic:true,
       outputElement: '#input' // CSS selector or DOM Element
     })
-    stream.on('error', (err) => console.log(err))
+    var that = this;
+    setTimeout(function(){
+    	that.props.store.changeState();
+    },9000)
+    stream.on('error', (err) => {
+    	console.log(err)
+    	this.props.store.audioState = 'ready'
+    	})
+    /*stream.on('close', (reasoncode,description)=> {
+    	console.log('microphone closed')
+    	this.props.store.audioState = 'ready'
+    })	*/
     stream.on('data', (d) => {
+  
       if(d.final) {
         this.props.store.audioReady()
         this.props.store.dialogSTT = d.alternatives[0].transcript;

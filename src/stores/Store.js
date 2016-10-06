@@ -42,11 +42,7 @@ class Store {
   
   
   dialogCallback = (answer) => {
-    /*if(!answer.text) {
-      console.log('no text in response!',answer)
-      return
-    }*/
-    //console.log('dialogCallback',answer)
+   
     var answerstring=''
    // for(var i=0;i<answer.output.text.length;i++)
     //this.answer = answer.text
@@ -58,8 +54,7 @@ class Store {
       source: 'you',
       value: answerstring
     })
-    //this.conversationId = answer.context.conversation_id
-    //liping added
+    
     this.dialogTTS=answerstring
     this.audioDialog()
   }
@@ -69,15 +64,15 @@ class Store {
   }
   questionUpdate = () => {
     let input = document.querySelector('#input')
-   
+
     var questionValue=input.value
-   // this.question = {"text": input.value, "seat":1}
+  
     this.history.push({
       source: 'me',
       value: input.value
     })
     input.value = ''
-    dialogService(questionValue, this.seatNumber, this.dialogCallback,this.serveraskwatson)
+    dialogService(questionValue, this.seatNumber.toString(), this.dialogCallback,this.serveraskwatson)
    
     
   }
@@ -99,16 +94,15 @@ class Store {
     //console.log('audioRecording')
     this.audioState = 'recording'
   }
-  /*
-  audioProcessing = () => {
-    console.log('audioProcessing')
-    this.audioState = 'processing'
-  }
-  */
+ 
   audioReady = () => {
     //console.log('audioReady')
     this.questionUpdate()
     this.audioState = 'ready'
+  }
+  changeState =()=>{
+  	 
+  	 this.audioState = 'ready'
   }
   guide = (mapboxgl,map) => {
     //console.log(map,e)

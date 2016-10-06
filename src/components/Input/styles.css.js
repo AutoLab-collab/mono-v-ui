@@ -18,6 +18,20 @@ export const styles = StyleSheet.create({
     //borderColor: '#CFCFCF',
     display: 'flex'
   },
+  seatWrapper: {
+    
+    //borderTop: '1px solid',
+    //borderColor: '#CFCFCF',
+    display: 'flex',
+    flexFlow: 'column'
+  },
+  noWrapper: {
+   
+    //borderTop: '1px solid',
+    //borderColor: '#CFCFCF',
+    display: 'flex'
+   
+  },
   input: {
     margin: '5px',
     padding: '5px',
