@@ -116,7 +116,32 @@ class Store {
       autoPlay: true,
       voice: "en-US_LisaVoice"
     })
-   }
+    var self=this
+    audio.addEventListener("ended", function() {
+    	self.startRecording()	
+    })
+  }
+  startRecording = () => {
+    this.audioRecording()
+    var self=this
+    let stream = WatsonSpeech.SpeechToText.recognizeMicrophone({
+      token: this.sttToken,
+      continuous: false, // stop transcription on first pause
+      keepMic:true,
+      outputElement: '#input' // CSS selector or DOM Element
+    }).promise().then(function() {
+    	self.audioReady()
+        self.dialogSTT=text
+    	})
+    	
+      .then(function(){
+    	self.changeState()}
+    	)
+      .catch(function(){
+    	self.changeState()}
+    	)	
+         
+   } 
    changeSeat=(seat_number) => {
    	this.seatNumber=seat_number
    	if (seat_number ==1)
