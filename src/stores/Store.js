@@ -64,7 +64,8 @@ class Store {
   }
   questionUpdate = () => {
     let input = document.querySelector('#input')
-
+    if(input.value!='')
+    {
     var questionValue=input.value
   
     this.history.push({
@@ -73,7 +74,11 @@ class Store {
     })
     input.value = ''
     dialogService(questionValue, this.seatNumber.toString(), this.dialogCallback,this.serveraskwatson)
-   
+    }
+    else
+     {
+        alert("You may click the microhpone if I missed what you have said.")
+    }
     
   }
   sttTokenCallback = (token) => {
@@ -135,9 +140,11 @@ class Store {
     	})
     	
       .then(function(){
+      	console.log('no input')
     	self.changeState()}
     	)
       .catch(function(){
+      	console.log('no response')
     	self.changeState()}
     	)	
          
