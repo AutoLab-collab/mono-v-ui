@@ -17,6 +17,8 @@ class Store {
   @observable seatState2 = false
   @observable seatState3 = false
   @observable seatState4 = false
+  @observable SpeakMode = false
+  @observable TypeOrSpeak = 'Type'
   @observable answer = 'Waiting on response from server...'
   @observable history = []
   @observable dialogSTT=''
@@ -26,7 +28,7 @@ class Store {
   //conversationId = ''
   @observable audioState = 'ready'
   server = {server: 'gsc-ind-cdp-api-lm.mybluemix.net', port: ''}
-  serveraskwatson={server:'mono-v-staging.mybluemix.net',port:''}
+  serveraskwatson={server:'mono-v.mybluemix.net',port:''}
   //server = {server: 'localhost', port: '6003'}
   sttToken = {}
   ttsToken = {}
@@ -109,21 +111,33 @@ class Store {
   	 
   	 this.audioState = 'ready'
   }
+  changeSpeakMode = ()=>{
+  	this.SpeakMode=!this.SpeakMode
+  	if(this.TypeOrSpeak=="Speak")
+  	this.TypeOrSpeak="Type"
+  	else
+  	this.TypeOrSpeak="Speak"
+  	
+  }
   guide = (mapboxgl,map) => {
     //console.log(map,e)
     styleRoute(mapboxgl, map, guideConfig.route)
     guidanceSim(map, guideConfig)
   }
    audioDialog=() => {
-    let audio = WatsonSpeech.TextToSpeech.synthesize({
+    var audio = WatsonSpeech.TextToSpeech.synthesize({
       text: this.dialogTTS,
       token: this.ttsToken,
       autoPlay: true,
       voice: "en-US_LisaVoice"
     })
+    console.log("audio",audio)
     var self=this
     audio.addEventListener("ended", function() {
-    	self.startRecording()	
+    	console.log("Finished playing audio");
+    	if(self.SpeakMode==true){
+    		self.startRecording();
+    	}    	        		
     })
   }
   startRecording = () => {
