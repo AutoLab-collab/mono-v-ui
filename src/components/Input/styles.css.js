@@ -23,7 +23,12 @@ export const styles = StyleSheet.create({
     //borderTop: '1px solid',
     //borderColor: '#CFCFCF',
     display: 'flex',
-    flexFlow: 'column'
+    flexFlow: 'column',
+    backgroundColor:'#FFCFCF'
+  },
+  typeWrapper:{
+  	backgroundColor:'#CFCFCF',
+  	color:"'#0000ff'"
   },
   noWrapper: {
    

@@ -13,22 +13,21 @@ import AudioRecorder from '../components/audio/AudioRecorder'
 class Store {
   @observable question = ''
   seatNumber = 1
-  @observable seatState1 = true
-  @observable seatState2 = false
-  @observable seatState3 = false
-  @observable seatState4 = false
+  @observable seatState=[true,false,false,false]
+ 
   @observable SpeakMode = false
   @observable TypeOrSpeak = 'Type'
   @observable answer = 'Waiting on response from server...'
   @observable history = []
   @observable dialogSTT=''
-  userName = 'Tae'
+
   projectName = 'Cognitive Driver Profile'
   clientId = ''
   //conversationId = ''
   @observable audioState = 'ready'
   server = {server: 'gsc-ind-cdp-api-lm.mybluemix.net', port: ''}
-  serveraskwatson={server:'mono-v.mybluemix.net',port:''}
+  serveraskwatson={server:'mono-v-staging.mybluemix.net',port:''}
+  
   //server = {server: 'localhost', port: '6003'}
   sttToken = {}
   ttsToken = {}
@@ -51,7 +50,7 @@ class Store {
    /*{ answerstring=answerstring+answer.output.text[i]
    }
    */
-    answerstring=answer.transcription
+    answerstring=answer.text
     this.history.push({
       source: 'you',
       value: answerstring
@@ -131,10 +130,10 @@ class Store {
       autoPlay: true,
       voice: "en-US_LisaVoice"
     })
-    console.log("audio",audio)
+    //console.log("audio",audio)
     var self=this
     audio.addEventListener("ended", function() {
-    	console.log("Finished playing audio");
+    	//console.log("Finished playing audio");
     	if(self.SpeakMode==true){
     		self.startRecording();
     	}    	        		
@@ -163,36 +162,17 @@ class Store {
     	)	
          
    } 
-   changeSeat=(seat_number) => {
-   	this.seatNumber=seat_number
-   	if (seat_number ==1)
-      {	
-      	this.seatState1= true
-      	this.seatState2 = false
-      	this.seatState3=false
-      	this.seatState4=false
-      }
-     else if (seat_number ==2)
-      {	
-      	this.seatState1= false
-      	this.seatState2 = true
-      	this.seatState3=false
-      	this.seatState4=false
-      } 
-      else if (seat_number==3)
-      {	
-      	this.seatState1= false
-      	this.seatState2 = false
-      	this.seatState3=true
-      	this.seatState4=false
-      } 
-      else if (seat_number ==4)
-      {	
-      	this.seatState1= false
-      	this.seatState2 = false
-      	this.seatState3=false
-      	this.seatState4=true
-      } 
+   changeSeat=(seat_number) => {  
+   	this.seatNumber = seat_number; 	   	
+   	for(var i = 1; i <= 4; i++){
+   		if (seat_number == i){
+   			this.seatState[i-1]=true
+   		}
+   		else{
+   		    this.seatState[i-1]=false	
+   		}
+   		
+   	}
    }
 }
 

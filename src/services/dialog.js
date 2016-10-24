@@ -1,9 +1,10 @@
-export default function(question,seatNumber,callback,serverDetails){
+export default function( question,seatNumber,callback,serverDetails){
   let urlSegment = '//'+serverDetails.server
   if(serverDetails.port.length != 0) urlSegment += ':'+serverDetails.port
   let postData = {
     "text": question,
-    "seat":seatNumber
+    "seat":seatNumber,
+    "demo_id":"seedDemoId"
   }
   let post = (url,data) => {
     return new Promise(function(resolve,reject){
